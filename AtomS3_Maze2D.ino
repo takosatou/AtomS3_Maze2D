@@ -32,8 +32,8 @@ int possible_dir(int x, int y, int* rdirs) {
     int nx = x + DIR[dir][0];
     int ny = y + DIR[dir][1];
     if (nx > 0 && nx < maze_size - 1 &&
-	ny > 0 && ny < maze_size - 1 &&
-	maze[ind(nx, ny)] == WALL) {
+        ny > 0 && ny < maze_size - 1 &&
+        maze[ind(nx, ny)] == WALL) {
       if (rdirs != NULL) rdirs[ct] = dir;
       ct++;
     }
@@ -52,9 +52,9 @@ bool find_new_position(int* rx, int* ry) {
       if (maze[ind(x, y)] != WAY) continue;
       int ndirs = possible_dir(x, y, NULL);
       if (ndirs > 0) {
-	*rx = x;
-	*ry = y;
-	return true;
+        *rx = x;
+        *ry = y;
+        return true;
       }
     }
   }
@@ -117,7 +117,6 @@ void move_draw(int dx, int dy) {
   if (sz == 1) {
     M5.Lcd.drawPixel(cx, cy, WHITE);
   } else {
-    int r = sz / 2;
     M5.Lcd.fillRect(cx * sz, cy * sz, sz, sz, WHITE);
   }
 }
@@ -131,13 +130,13 @@ void draw_maze() {
   if (sz == 1) {
     for (int y = 0; y < maze_size; y++) {
       for (int x = 0; x < maze_size; x++, p++) {
-	M5.Lcd.drawPixel(x, y, *p == WALL ? DARKCYAN : BLACK);
+        M5.Lcd.drawPixel(x, y, *p == WALL ? DARKCYAN : BLACK);
       }
     }
   } else {
     for (int y = 0; y < maze_size; y++) {
       for (int x = 0; x < maze_size; x++, p++) {
-	M5.Lcd.fillRect(x * sz, y * sz, sz, sz, *p == WALL ? DARKCYAN : BLACK);
+        M5.Lcd.fillRect(x * sz, y * sz, sz, sz, *p == WALL ? DARKCYAN : BLACK);
       }
     }
   }
